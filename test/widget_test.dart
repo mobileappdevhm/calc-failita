@@ -43,7 +43,7 @@ void main() {
     await tester.tap(find.text("="));
     await tester.pump();
 
-    expect(find.text('5.0'), findsOneWidget);
+    expect(find.text('5.00'), findsOneWidget);
 
 
   });

@@ -119,6 +119,7 @@ class CalcState extends State<Calculator>{
       case "x":
       case "+":
       case "-":
+      // ignore: case_block_not_terminated
       case "/":
         if( op =='z' || op ==null){
           op = keyvalue;
