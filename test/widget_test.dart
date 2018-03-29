@@ -28,22 +28,23 @@ void main() {
     expect(find.text('/'), findsOneWidget);
     expect(find.text('C'), findsOneWidget);
 
-
-    await tester.tap(find.text("10"));
+    await tester.tap(find.text("1"));
     await tester.tap(find.text("+"));
     await tester.tap(find.text("9"));
     await tester.tap(find.text("="));
     await tester.pump();
 
-    expect(find.text('19'), findsOneWidget);
+    expect(find.text('10.00'), findsOneWidget);
 
-    await tester.tap(find.text("10"));
-    await tester.tap(find.text("/"));
-    await tester.tap(find.text("2"));
+    await tester.tap(find.text("1"));
+    await tester.tap(find.text("+"));
+    await tester.tap(find.text("0"));
+    await tester.tap(find.text("."));
+    await tester.tap(find.text("9"));
     await tester.tap(find.text("="));
     await tester.pump();
 
-    expect(find.text('5.00'), findsOneWidget);
+    expect(find.text('1.90'), findsOneWidget);
 
 
   });
