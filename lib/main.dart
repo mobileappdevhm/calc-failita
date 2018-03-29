@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.deepOrange,
       ),
       home: new Calculator(),
     );
@@ -120,14 +120,44 @@ class CalcState extends State<Calculator>{
       case "+":
       case "-":
       case "/":
+        if( op =='z' || op ==null){
+          op = keyvalue;
+          value = '';
+          prevValue = double.parse(inputString);
+          setState(() {
+            inputString = inputString + keyvalue;
+          });
+          break;
+        }else{
+          setState(() {
+            switch (op){
+              case "+":
+                inputString =
+                    (prevValue - double.parse(value)).toStringAsFixed(2);
+                break;
+              case "-":
+                inputString =
+                    (prevValue - double.parse(value)).toStringAsFixed(2);
+                break;
+              case "x":
+                inputString =
+                    (prevValue * double.parse(value)).toStringAsFixed(2);
+                break;
+              case "/":
+                inputString =
+                    (prevValue / double.parse(value)).toStringAsFixed(2);
+                break;
+            }
+          });
 
-        op = keyvalue;
-        value = '';
-        prevValue = double.parse(inputString);
-        setState(() {
-          inputString = inputString + keyvalue;
-        });
-        break;
+          op = keyvalue;
+          prevValue = double.parse(inputString);
+          value = '';
+          setState(() => inputString = inputString + keyvalue);
+
+          break;
+
+        }
       case "=":
         if(op!= null){
           setState(() {
