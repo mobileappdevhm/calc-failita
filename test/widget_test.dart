@@ -29,7 +29,21 @@ void main() {
     expect(find.text('C'), findsOneWidget);
 
 
-    
+    await tester.tap(find.text("10"));
+    await tester.tap(find.text("+"));
+    await tester.tap(find.text("9"));
+    await tester.tap(find.text("="));
+    await tester.pump();
+
+    expect(find.text('19'), findsOneWidget);
+
+    await tester.tap(find.text("10"));
+    await tester.tap(find.text("/"));
+    await tester.tap(find.text("2"));
+    await tester.tap(find.text("="));
+    await tester.pump();
+
+    expect(find.text('5.0'), findsOneWidget);
 
 
   });
